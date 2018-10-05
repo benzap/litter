@@ -1,0 +1,28 @@
+#+TITLE: Litter - Number Literal Utility Library in Clojure(script)
+#+AUTHOR: Benjamin Zaporzan
+#+DATE: 2018-10-04
+#+EMAIL: benzaporzan@gmail.com
+#+LANGUAGE: en
+#+OPTIONS: H:2 num:t toc:t \n:nil ::t |:t ^:t f:t tex:t
+
+* What is it for?
+  To express big numbers in an easier to read way. Especially numbers
+  with repeating zeros. It can be difficult to read 100000000, when
+  it could be expressed as (lit/num :100M)
+  
+* examples
+
+General Number Literals
+#+BEGIN_SRC clojure
+  (require '[litter.core :as lit])
+
+  (lit/num "100") ;; 100
+  (lit/num "100,000") ;; 100000
+  (lit/num "100,000.2345") ;; 100000.2345
+  (lit/num "100,000,000") ;; 100000000
+  (lit/num :100M) ;; 100000000
+  (lit/num :100M2k20m) ;; 100002000.020
+  (lit/num :100M20M2k) ;; ERROR
+  (lit/num "100,000,000,00") ;; ERROR
+#+END_SRC
+
